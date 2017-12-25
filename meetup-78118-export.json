@@ -1,0 +1,66 @@
+{
+  "meetups" : {
+    "-L0hRqwiPLchwtT5FsW_" : {
+      "description" : "javascript meetup",
+      "image" : "https://www.skyrockit.com/wp-content/uploads/2015/09/javascript-meetup-cebu01.jpg",
+      "name" : "Javascript"
+    },
+    "-L0hSJ85HtPfo8zGjXim" : {
+      "description" : "react native meetup",
+      "image" : "http://photos1.meetupstatic.com/photos/event/c/3/4/5/600_446569989.jpeg",
+      "name" : "RN"
+    },
+    "-L0hSRhsdlKW6UIMVs8n" : {
+      "description" : "react native bangalor",
+      "image" : "https://cdn-images-1.medium.com/max/1439/1*cmjTSIm0C-58qF-by1SQng.jpeg",
+      "name" : "react native bangalor"
+    },
+    "-L0hSc3zpu47d7IA8iQ3" : {
+      "description" : "advance nodejs",
+      "image" : "https://linagora.com/sites/default/files/styles/image_news/public/nodejs_linagora_open_source.png?itok=xo_3n-E3",
+      "name" : "nodejs"
+    },
+    "-L0hSnKU3Q0La9AkjiA5" : {
+      "creatorId" : "n7z6nTFWAiRftsrxjIjtjwKjdGY2",
+      "description" : "angular",
+      "image" : "https://raw.githubusercontent.com/angular-hamburg/angular.hamburg/master/docs/media/preview.png",
+      "name" : "angular"
+    },
+    "-L0hT0ACz_Pndz9eq9xR" : {
+      "creatorId" : "n7z6nTFWAiRftsrxjIjtjwKjdGY2",
+      "description" : "vuejs meetup",
+      "image" : "https://secure.meetupstatic.com/photos/event/9/4/d/7/event_463118103.jpeg",
+      "name" : "vuejs"
+    },
+    "-L0hT9BKJyinfYiYLJuH" : {
+      "creatorId" : "n7z6nTFWAiRftsrxjIjtjwKjdGY2",
+      "description" : "reactjs apply",
+      "image" : "https://secure.meetupstatic.com/photos/event/8/b/d/5/600_460415797.jpeg",
+      "name" : "reactjs"
+    },
+    "-L0hTPL5Y-hkk9kb4qdE" : {
+      "creatorId" : "n7z6nTFWAiRftsrxjIjtjwKjdGY2",
+      "description" : "mongodb vs nodejs",
+      "image" : "https://image.slidesharecdn.com/ato2015-tddarestapiwithmongodbnode-151020211442-lva1-app6892/95/tdd-a-rest-api-with-nodejs-and-mongodb-1-638.jpg?cb=1445375763",
+      "name" : "mongodb"
+    },
+    "-L0hTZLiQ9x5nwlqT5U2" : {
+      "creatorId" : "n7z6nTFWAiRftsrxjIjtjwKjdGY2",
+      "description" : "expressjs",
+      "image" : "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/0/7/c/600_459428316.jpeg",
+      "name" : "express"
+    },
+    "-L0hehOJZVnD_kgZwhlB" : {
+      "creatorId" : "n7z6nTFWAiRftsrxjIjtjwKjdGY2",
+      "description" : "golang conf",
+      "image" : "https://www.mailjet.com/wp-content/uploads/2015/09/Screen-Shot-2015-09-07-at-11.23.13-AM.png",
+      "name" : "golang"
+    },
+    "-L0huZ-8Kh_zBMci_wHO" : {
+      "creatorId" : "n7z6nTFWAiRftsrxjIjtjwKjdGY2",
+      "description" : "JS meetup",
+      "image" : "https://www.skyrockit.com/wp-content/uploads/2015/09/javascript-meetup-cebu01.jpg",
+      "name" : "Javascript"
+    }
+  }
+}

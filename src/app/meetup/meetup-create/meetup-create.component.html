@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+  <div class="col-9">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+          <div class="form-group">
+            <label for="name">Meetup name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Your meetup name"
+              name="name"
+              [ngModel]="(meetup$ | async)?.name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="short description of your meetup"
+              name="description"
+              [ngModel]="(meetup$ | async)?.description"
+              required
+            />
+          </div>
+          <div class="form-group">
+              <label for="image">Image</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="meetup image url"
+                name="image"
+                [ngModel]="(meetup$ | async)?.image"
+                required
+              />
+            </div>
+          <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+  </div>
+</div>

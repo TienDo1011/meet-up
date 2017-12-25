@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-4 my-2 text-center" *ngFor="let meetup of meetups$ | async">
+    <div class="card cursor">
+      <img class="card-img-top" src={{meetup.image}} alt="Card image cap" (click)="goTo('view', meetup.key)">
+      <div class="card-body">
+        <h4 class="card-title">{{meetup.name}}</h4>
+        <p class="card-text">{{meetup.description}}</p>
+        <a class="btn btn-primary" (click)="goTo('view', meetup.key)">View</a>
+        <button class="btn btn-warning" *ngIf="auth.uid && (meetup.creatorId === auth.uid)" (click)="goTo('edit', meetup.key)">Edit</button>
+        <button class="btn btn-danger" *ngIf="auth.uid && (meetup.creatorId === auth.uid)" (click)="delete(meetup.key)">Delete</button>
+        <button class="btn btn-danger" *ngIf="auth.uid && (meetup.creatorId !== auth.uid) && !meetup.registered" (click)="register(meetup.key, auth)">Register</button>
+        <button class="btn btn-danger" *ngIf="auth.uid && (meetup.creatorId !== auth.uid) && meetup.registered" (click)="unregister(meetup.key, auth.uid)">Un-Register</button>
+      </div>
+    </div>
+  </div>
+</div>
