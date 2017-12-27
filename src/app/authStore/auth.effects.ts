@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import 'rxjs/add/operator/switchMap';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { LOGIN, LOGIN_SUCCESS, LOGOUT, LOGOUT_SUCCESS, CHECK_LOGIN } from './auth.actions';
+import { LOGIN, LOGIN_SUCCESS, LOGOUT, LOGOUT_SUCCESS, CHECK_LOGIN, DO_NOTHING } from './auth.actions';
 import * as firebase from 'firebase/app';
 
 @Injectable()
@@ -20,12 +20,16 @@ export class AuthEffects {
       return JSON.parse(localStorage.getItem('auth'));
     })
     .map(auth => {
-      if (auth.uid) {
+      if (auth && auth.uid) {
         return {
           type: LOGIN_SUCCESS,
           payload: {
             user: auth
           }
+        };
+      } else {
+        return {
+          type: DO_NOTHING
         };
       }
     });
@@ -48,7 +52,6 @@ export class AuthEffects {
       return userData;
     })
     .map(userData => {
-      console.log('user', userData);
       return {
         type: LOGIN_SUCCESS,
         payload: {

@@ -4,7 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { Meetup } from '../meetup';
 import { AppState } from '../../app.reducers';
 import { Store } from '@ngrx/store';
-import 'rxjs/add/operator/concatMap';
 
 @Component({
   selector: 'app-meetup-view',

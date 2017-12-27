@@ -5,6 +5,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGOUT = 'LOGOUT';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const CHECK_LOGIN = 'CHECK_LOGIN';
+export const DO_NOTHING = 'DO_NOTHING';
 
 export class Login implements Action {
   readonly type = LOGIN;
