@@ -91,8 +91,11 @@ export class MeetupEffects {
       return action.payload;
     })
     .mergeMap(({ meetup }: { meetup: Meetup }) => {
-      return this.store.select('auth').map(auth => {
+      return this.store.select('auth')
+      .take(1)
+      .map(auth => {
         meetup.creatorId = auth.uid;
+        meetup.creatorName = auth.displayName;
         return this.meetupsRef.push(meetup);
       });
     })

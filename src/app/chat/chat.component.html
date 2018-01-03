@@ -1,0 +1,24 @@
+<div class="chat-box">
+  <div *ngIf="showChatWindow">
+  <h6 class="chat-header">{{ chatWith }} <span class="float-right cursor" (click)="hideChatBox()">X</span></h6>
+  <div class="chat-body" #chatBody>
+    <div *ngFor="let chatline of chatDialog | async">
+      <div [ngClass]="{colorIt: chatline.sender === currentUser, chatline: true}" #chatLine>
+          {{ chatline.message }}
+      </div>
+    </div>
+  </div>
+  <input type="text" [(ngModel)]="message" (keypress)="onKeypress($event)"/>
+  <button (click)="send()">Send</button>
+  </div>
+  <div *ngIf="(auth$ | async)?.uid">
+    <h4 class="chat-header">Let's chat</h4>
+    <div class="chat-body">
+      <div *ngFor="let user of users | async">
+        <p *ngIf="user !== currentUser" (click)="showChat(user)">
+          {{ user }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

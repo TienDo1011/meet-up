@@ -1,10 +1,11 @@
 <div class="row justify-content-center" *ngIf="meetup$ | async as meetup">
-  <div class="col-9 my-2 text-center">
+  <div class="col-9 my-2 text-left">
     <div class="card">
         <img class="card-img-top" src={{meetup.image}} alt="Card image cap">
-        <div class="card-body">
-          <h4 class="card-title">{{meetup.name}}</h4>
-          <p class="card-text">{{meetup.description}}</p>
+        <div class="card-body py-2">
+          <span class="card-title display-4"><strong>{{meetup.name}}</strong></span> created by 
+          <span class="card-text"><em>{{meetup.creatorName}}</em></span>
+          <p class="card-text"><em>{{meetup.description}}</em></p>
         </div>
       </div>
   </div>
@@ -12,9 +13,7 @@
   <div class="card">
       <div class="card-body">
         <h4 class="card-title">
-        <button class="btn btn-primary">
-            Registered Users: <span class="badge badge-light">{{meetup.registeredUsers.length}}</span>
-          </button>
+          Registered Users: <span class="badge badge-light">{{meetup.registeredUsers.length}}</span>
         </h4>
         <div class="row">
           <div class="col-4" *ngFor="let rUser of meetup.registeredUsers">

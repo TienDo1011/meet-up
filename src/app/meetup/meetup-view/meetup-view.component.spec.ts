@@ -6,7 +6,6 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/concatMap';
 
 class ActivatedRouteStub {
   private subject = new Subject();
@@ -22,7 +21,7 @@ class ActivatedRouteStub {
 
 class StoreStub {
   storeState = {
-    meetups: Observable.of([{key: 1}])
+    meetups: Observable.of([{key: '1'}])
   };
 
   select(value) {
@@ -48,8 +47,6 @@ describe('MeetupViewComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(MeetupViewComponent);
     component = fixture.componentInstance;
-    console.log('component', new Observable());
-    console.log('component2', Observable.of);
     fixture.detectChanges();
   });
 
@@ -60,9 +57,11 @@ describe('MeetupViewComponent', () => {
   it('should show meetup', () => {
     const route: ActivatedRouteStub = TestBed.get(ActivatedRoute);
     const store = TestBed.get(Store);
-    const spy = spyOn(store, 'select');
-    console.log('store', store.select('meetups'));
+    const spy = spyOn(store, 'select').and.callThrough();
     route.push({ id: 1 });
-    expect(spy).toHaveBeenCalledWith(1);
+    expect(spy).toHaveBeenCalledWith('meetups');
+    component.meetup$.subscribe(m => {
+      expect(m).toContain({key: '1'});
+    });
   });
 });

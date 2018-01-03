@@ -4,7 +4,11 @@
       <img class="card-img-top" src={{meetup.image}} alt="Card image cap" (click)="goTo('view', meetup.key)">
       <div class="card-body">
         <h4 class="card-title">{{meetup.name}}</h4>
-        <p class="card-text">{{meetup.description}}</p>
+        <p class="card-text">
+          {{ meetup.description.length > 60 ?
+            (meetup.description.slice(0, 60) + '...')
+          : meetup.description }}
+        </p>
         <a class="btn btn-primary" (click)="goTo('view', meetup.key)">View</a>
         <button class="btn btn-warning" *ngIf="auth.uid && (meetup.creatorId === auth.uid)" (click)="goTo('edit', meetup.key)">Edit</button>
         <button class="btn btn-danger" *ngIf="auth.uid && (meetup.creatorId === auth.uid)" (click)="delete(meetup.key)">Delete</button>

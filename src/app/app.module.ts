@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -20,6 +20,8 @@ import { MeetupCreateComponent } from './meetup/meetup-create/meetup-create.comp
 import { MeetupViewComponent } from './meetup/meetup-view/meetup-view.component';
 import { MeetupEffects } from './meetup/store/meetup.effects';
 import { AuthEffects } from './authStore/auth.effects';
+import { ChatComponent } from './chat/chat.component';
+import { ChatEffects } from './chat/store/chat.effects';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/meetups', pathMatch: 'full' },
@@ -34,17 +36,19 @@ const appRoutes: Routes = [
     AppComponent,
     MeetupListComponent,
     MeetupCreateComponent,
-    MeetupViewComponent
+    MeetupViewComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
+    ReactiveFormsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([MeetupEffects, AuthEffects]),
+    EffectsModule.forRoot([MeetupEffects, AuthEffects, ChatEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25 //  Retains last 25 states
     })

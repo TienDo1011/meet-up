@@ -4,14 +4,18 @@ import 'rxjs/add/operator/switchMap';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LOGIN, LOGIN_SUCCESS, LOGOUT, LOGOUT_SUCCESS, CHECK_LOGIN, DO_NOTHING } from './auth.actions';
 import * as firebase from 'firebase/app';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Injectable()
 export class AuthEffects {
-
+  usersRef: AngularFireList<string>;
   constructor(
     private actions$: Actions,
-    private afAuth: AngularFireAuth
-  ) { }
+    private afAuth: AngularFireAuth,
+    private db: AngularFireDatabase
+  ) {
+    this.usersRef = this.db.list('users');
+  }
 
   @Effect()
   checkLogin = this.actions$
@@ -49,6 +53,15 @@ export class AuthEffects {
         photoURL: user.photoURL
       };
       localStorage.setItem('auth', JSON.stringify(userData));
+      return userData;
+    })
+    .map(userData => {
+      this.usersRef.valueChanges().subscribe(changes => {
+        console.log('changes', changes);
+        if (changes.indexOf(userData.email) === -1) {
+          this.usersRef.push(userData.email);
+        }
+      });
       return userData;
     })
     .map(userData => {

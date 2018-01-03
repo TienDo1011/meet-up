@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 import { AppState } from './app.reducers';
 import { Store } from '@ngrx/store';
@@ -14,7 +13,6 @@ import { Login, Logout, CheckLogin } from './authStore/auth.actions';
 export class AppComponent implements OnInit {
   auth$;
   constructor(
-    private route: ActivatedRoute,
     private store: Store<AppState>
   ) { }
 

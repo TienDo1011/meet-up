@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Meetup } from '../meetup';
 import { AppState } from '../../app.reducers';
 import { Store } from '@ngrx/store';
+import 'rxjs/add/operator/concatMap';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/empty';
 
 @Component({
   selector: 'app-meetup-view',
@@ -11,11 +14,11 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./meetup-view.component.css'],
 })
 export class MeetupViewComponent implements OnInit {
-  meetup$: Observable<Meetup>;
-  registerUser$;
+  meetup$: Observable<any>;
   constructor(
     private route: ActivatedRoute,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -23,7 +26,14 @@ export class MeetupViewComponent implements OnInit {
       const key = params['id'];
       this.meetup$ = this.store.select('meetups')
         .concatMap(meetups => {
-          return meetups.filter(m => m.key === key);
+          const meetupArr = meetups.filter(m => m.key === key);
+          if (meetupArr.length < 1) {
+            alert('the meetup you\'re viewing are no longer exist!');
+            this.router.navigate(['/']);
+            return Observable.empty();
+          } else {
+            return meetupArr;
+          }
         });
     });
   }

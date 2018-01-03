@@ -53,6 +53,8 @@ export class MeetupListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.uidSubscription.unsubscribe();
+    if (this.uidSubscription) {
+      this.uidSubscription.unsubscribe();
+    }
   }
 }

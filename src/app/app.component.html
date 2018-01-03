@@ -1,31 +1,34 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" routerLink="/">Meetup App</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+    
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
-        <li class="nav-item active" *ngIf="(auth$ | async)?.uid">
+        <li class="nav-item" *ngIf="(auth$ | async)?.uid">
           <a class="nav-link">Hi {{ (auth$ | async)?.displayName }}</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/meetups">Meetups <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/meetups">Meetups
+            <span class="sr-only">(current)</span>
+          </a>
         </li>
         <li class="nav-item" *ngIf="(auth$ | async)?.uid">
           <a class="nav-link" routerLink="/meetups/create">Create Meetup</a>
         </li>
         <li class="nav-item" *ngIf="(auth$ | async)?.uid; else signUp">
-            <a class="nav-link cursor" (click)="logout()">Logout</a>
+          <a class="nav-link cursor" (click)="logout()">Logout</a>
         </li>
         <ng-template #signUp>
           <li class="nav-item">
-              <a class="nav-link cursor" (click)="login()">Login</a>
-            </li>
+            <a class="nav-link cursor" (click)="login()">Login</a>
+          </li>
         </ng-template>
       </ul>
     </div>
-  </nav>
+    </nav>
 <div class="container">
   <div class="row py-5 my-5">
     <div class="col-12">
@@ -33,4 +36,4 @@
     </div>
   </div>
 </div>
-
+<app-chat></app-chat>

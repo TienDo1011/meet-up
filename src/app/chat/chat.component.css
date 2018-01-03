@@ -1,0 +1,32 @@
+.chat-box {
+  position: fixed;
+  bottom: 0;
+  right: 1rem;
+  box-shadow: 12px 0 15px -4px rgba(31, 73, 125, 0.8), -12px 0 8px -4px rgba(31, 73, 125, 0.8);
+  background-color: white;
+  display: flex;
+}
+
+.chat-header {
+  background-color: #4080ff;
+  color: white;
+}
+
+.chat-body {
+  cursor: pointer;
+  overflow: scroll;
+  max-height: 10rem;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.colorIt {
+  background-color: aqua;
+  text-align: right;
+}
+
+.chatline {
+  max-width: 14.3rem;
+}
